@@ -285,7 +285,7 @@ textarea:focus{
     gap: 20px !important;
   }
   
-  /* Buttons row - keep horizontal on mobile */
+  /* Buttons row - allow wrapping into two rows */
   .row:nth-of-type(2) {
     flex-direction: row !important;
     justify-content: center !important;
@@ -293,10 +293,17 @@ textarea:focus{
     gap: 10px !important;
   }
   
-  /* Content sections - stack vertically on mobile */
+  /* Allow buttons in the buttons row to shrink and wrap */
+  .row:nth-of-type(2) > * {
+    flex-shrink: 1 !important;
+  }
+  
+  /* Content sections - allow wrapping to two columns when space allows */
   .row:nth-of-type(n+3) {
-    flex-direction: column !important;
+    flex-direction: row !important;
+    flex-wrap: wrap !important;
     align-items: center !important;
+    justify-content: center !important;
     gap: 15px !important;
   }
   
@@ -319,19 +326,23 @@ textarea:focus{
   }
 
   
-  /* Buttons - keep horizontal but smaller */
+  /* Buttons - allow wrapping into two rows */
   .infoBTNs {
     font-size: 20px !important;
     padding: 6px 12px !important;
     margin: 2px !important;
-    flex: 1;
+    flex: 0 1 auto !important;
     min-width: 80px;
+    max-width: calc(50% - 10px);
+    box-sizing: border-box;
   }
   
-  /* Project containers - stack vertically */
+  /* Project containers - take full width on mobile */
   .project-container {
-    max-width: 90vw !important;
-    width: 90vw !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
     margin: 10px 0 !important;
   }
   
@@ -403,6 +414,9 @@ textarea:focus{
     font-size: 16px !important;
     padding: 4px 8px !important;
     min-width: 60px;
+    flex: 0 1 auto !important;
+    max-width: calc(50% - 10px);
+    box-sizing: border-box;
   }
   
   .contact {
@@ -431,6 +445,12 @@ textarea:focus{
     height: 80px !important;
   }
 
-
+  /* Project containers - full width on extra small screens */
+  .project-container {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: 1 1 100% !important;
+  }
 
 }
