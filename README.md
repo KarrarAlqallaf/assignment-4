@@ -1,6 +1,6 @@
-🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑👇
+🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑🛑
 
-The video presentation link: 
+The video presentation link👇: 
 
 https://youtu.be/eHIKAP-OK-8
 
