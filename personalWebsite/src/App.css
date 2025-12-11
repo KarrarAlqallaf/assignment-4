@@ -395,14 +395,17 @@ textarea:focus{
   }
   
   /* Language and theme buttons - same size and prevent wrapping */
-  .languageBTN,
-  .themeBTN {
+  .row:first-of-type .languageBTN,
+  .row:first-of-type .themeBTN {
     font-size: 24px !important;
     padding: 8px 16px !important;
     flex-shrink: 0 !important;
     white-space: nowrap !important;
-    min-width: fit-content !important;
+    width: 100px !important;
+    min-width: 100px !important;
+    max-width: 100px !important;
     box-sizing: border-box !important;
+    text-align: center !important;
   }
   
   .languageBTN {
@@ -470,10 +473,14 @@ textarea:focus{
   }
 
   /* Language and theme buttons - same size on extra small screens */
-  .languageBTN,
-  .themeBTN {
+  .row:first-of-type .languageBTN,
+  .row:first-of-type .themeBTN {
     font-size: 20px !important;
     padding: 6px 12px !important;
+    width: 90px !important;
+    min-width: 90px !important;
+    max-width: 90px !important;
+    text-align: center !important;
   }
 
 }
