@@ -98,7 +98,6 @@ const GitHubRepos = ({
 
   return (
     <section className="repo-section">
-      <h3 className="repo-heading">{labels.heading}</h3>
 
       {loading && <p className="repo-info">{labels.loading}</p>}
 

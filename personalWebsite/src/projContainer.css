@@ -6,9 +6,11 @@
   border-radius: 15px;
   border: 1px solid var(--color-card-border);
   transition: all 0.3s ease;
-  width: 500px;
-  height: 350px;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
   background-color: transparent;
+  box-sizing: border-box;
   
 }
 
@@ -39,9 +41,39 @@
   text-align: center;
 }
 
+.project-images-container {
+  display: flex;
+  gap: 6px;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
 .project-image { 
   width: 100%;
-  height: 240px; 
-  object-fit: cover;
+  height: auto;
+  object-fit: contain;
   border-radius: 15px;
+  display: block;
+}
+
+.project-image.dual-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Mobile: stack images in column */
+@media (max-width: 768px) {
+  .project-images-container {
+    flex-direction: column;
+  }
+  
+  .project-image.dual-image {
+    width: 100%;
+  }
+  
+  .project-container {
+    width: 100%;
+    max-width: 100%;
+  }
 }

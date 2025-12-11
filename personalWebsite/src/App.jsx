@@ -79,6 +79,7 @@ const App = () => {
       ? 'King Fahd University of Petroleum and Minerals computer science student. Saudi born at 2004 in Qatif.'
       : 'طالب علوم حاسب بجامعة الملك فهد للبترول والمعادن. سعودي مواليد 2004 في القطيف.',
     projectsTab: language === 'Eng' ? 'Projects' : 'المشاريع',
+    repositoriesTab: language === 'Eng' ? 'Repositories' : 'المستودعات',
     skillsTab: language === 'Eng' ? 'Skills' : 'المهارات',
     hobbiesTab: language === 'Eng' ? 'Hobbies' : 'الهوايات',
     skillsContent: language === 'Eng' ? 'Figma, Python, Java, React & more' : 'فيجما، بايثون، جافا، رياكت والمزيد',
@@ -147,6 +148,12 @@ const App = () => {
           {text.projectsTab}
         </button>
         <button
+          className={`infoBTNs ${activeTab === 'repositories' ? 'active' : ''}`}
+          onClick={() => handleTabClick('repositories')}
+        >
+          {text.repositoriesTab}
+        </button>
+        <button
           className={`infoBTNs ${activeTab === 'skills' ? 'active' : ''}`}
           onClick={() => handleTabClick('skills')}
         >
@@ -161,16 +168,26 @@ const App = () => {
       </Row>
 
       {/* Content sections - only show active tab */}
-      {/* (ProjectContainer titles should be updated inside ProjectContainer component 
-          if it needs to be multilingual) */}
       <div style={{
-        height: '400px',
+        height: '775px',
         overflow: 'auto'
       }}>
         {activeTab === 'projects' && (
-          <>
-            <GitHubRepos language={language} />
-          </>
+          <Row wrap={true} gap="20px" padding="20px 0">
+            <ProjectContainer
+              title="JadwalGYM"
+              images={[
+                { dark: '/jd1dark.png', light: '/jd1light.png' },
+                { dark: '/jd2dark.png', light: '/jd2light.png' }
+              ]}
+              imageAlt="JadwalGYM project"
+              url="https://jadwal-gym-git-main-karraralqallafs-projects.vercel.app/"
+            />
+          </Row>
+        )}
+
+        {activeTab === 'repositories' && (
+          <GitHubRepos language={language} />
         )}
 
         {activeTab === 'skills' && (
