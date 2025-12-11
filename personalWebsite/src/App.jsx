@@ -129,7 +129,7 @@ const App = () => {
           </p>
         </Column>
         <Circle
-          imageSrc="/src/assets/Images/My circle image.png"
+          imageSrc="/My circle image.png"
           alt="Karrar Alqallaf profile picture"
         />
       </Row>
