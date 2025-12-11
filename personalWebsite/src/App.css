@@ -404,6 +404,7 @@ textarea:focus{
     width: 100px !important;
     min-width: 100px !important;
     max-width: 100px !important;
+    height: 60px !important;
     box-sizing: border-box !important;
     text-align: center !important;
   }
@@ -480,7 +481,8 @@ textarea:focus{
     width: 90px !important;
     min-width: 90px !important;
     max-width: 90px !important;
-    height: 50px !important;
+    height: 45px !important;
+
     text-align: center !important;
   }
 
