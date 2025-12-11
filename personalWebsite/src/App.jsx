@@ -22,15 +22,8 @@ const App = () => {
     return savedTheme || 'molokai-dark'
   })
 
-  // State for form fields
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: ''
-  })
-
-  // State for success message
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false)
+  // State for copy button glow and success message
+  const [isCopied, setIsCopied] = useState(false)
 
   const handleTabClick = (tab) => {
     setActiveTab(tab)
@@ -64,53 +57,19 @@ const App = () => {
     )
   }
 
-  // Handle input changes
-  const handleInputChange = (e) => {
-    const { id, value } = e.target
-    setFormData(prev => ({
-      ...prev,
-      [id]: value
-    }))
-  }
-
-  // Email validation function
-  const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    return emailRegex.test(email)
-  }
-
-  // Handle form submission
-  const handleSubmit = () => {
-    // Check if email is valid
-    if (!isValidEmail(formData.email)) {
-      alert(language === 'Eng'
-        ? 'Please enter a valid email address'
-        : 'الرجاء إدخال عنوان بريد إلكتروني صحيح')
-      return
+  // Handle email copy
+  const handleCopyEmail = async () => {
+    const email = 'contact.karrar@gmail.com'
+    try {
+      await navigator.clipboard.writeText(email)
+      setIsCopied(true)
+      // Hide success message after 3 seconds
+      setTimeout(() => {
+        setIsCopied(false)
+      }, 3000)
+    } catch (err) {
+      console.error('Failed to copy email:', err)
     }
-
-    // Check if all fields are filled
-    if (!formData.name || !formData.email || !formData.message) {
-      alert(language === 'Eng'
-        ? 'Please fill in all fields'
-        : 'الرجاء ملء جميع الحقول')
-      return
-    }
-
-    // Clear the form
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    })
-
-    // Show success message
-    setShowSuccessMessage(true)
-
-    // Hide success message after 3 seconds
-    setTimeout(() => {
-      setShowSuccessMessage(false)
-    }, 3000)
   }
 
   // Helper object for simple content translation
@@ -124,12 +83,9 @@ const App = () => {
     hobbiesTab: language === 'Eng' ? 'Hobbies' : 'الهوايات',
     skillsContent: language === 'Eng' ? 'Figma, Python, Java, React & more' : 'فيجما، بايثون، جافا، رياكت والمزيد',
     hobbiesContent: language === 'Eng' ? 'Motor Sport, Gaming & Fitness' : ' السيارات، الألعاب الرقمية و كمال الأجسام',
-    contactTitle: language === 'Eng' ? 'Contact Me' : 'تواصل معي',
-    namePlaceholder: language === 'Eng' ? 'Your Name' : 'اسمك',
-    emailPlaceholder: language === 'Eng' ? 'Your Email' : 'بريدك الإلكتروني',
-    messagePlaceholder: language === 'Eng' ? 'your message' : 'رسالتك',
-    submitButton: language === 'Eng' ? 'Submit' : 'إرسال',
-    successMessage: language === 'Eng' ? 'Message sent successfully!' : 'تم إرسال الرسالة بنجاح!',
+    contactTitle: language === 'Eng' ? 'Contact me in:' : 'تواصل معي في:',
+    copyButton: language === 'Eng' ? 'Copy' : 'نسخ',
+    emailCopiedMessage: language === 'Eng' ? 'Email copied successfully!' : 'تم نسخ البريد الإلكتروني بنجاح!',
     themeBTN_TextDark: language === 'Eng' ? 'Dark' : 'داكن',
     themeBTN_TextWhite: language === 'Eng' ? 'White' : 'مضيء'
 
@@ -233,45 +189,26 @@ const App = () => {
       </div>
 
 
-      {/* contact me section */}
+      {/* contact section - email with copy button */}
       <Row padding="15px 0" align="flex-end" gap='25px'>
-        {/* --- Contact Title Translation --- */}
         <h2 className='contact'>{text.contactTitle}</h2>
-        <p className='email'>s202267840@kfupm.edu.sa</p>
+        <p className='email'>contact.karrar@gmail.com</p>
+        <button 
+          className={`copy-email-btn ${isCopied ? 'glow' : ''}`}
+          onClick={handleCopyEmail}
+        >
+          {text.copyButton}
+        </button>
       </Row>
-      <Row gap='25px' padding="15px 0">
-        {/* --- Contact Form Placeholder Translation --- */}
-        <textarea
-          placeholder={text.namePlaceholder}
-          id="name"
-          value={formData.name}
-          onChange={handleInputChange}
-        ></textarea>
-        <textarea
-          placeholder={text.emailPlaceholder}
-          id="email"
-          value={formData.email}
-          onChange={handleInputChange}
-        ></textarea>
-      </Row>
+
+      {/* Success Message - always reserve space */}
       <Row padding="15px 0">
-        <textarea
-          placeholder={text.messagePlaceholder}
-          id="message"
-          style={{ width: "941px", height: "268px" }}
-          value={formData.message}
-          onChange={handleInputChange}
-        ></textarea>
+        {isCopied ? (
+          <p className='email-copied-message'>{text.emailCopiedMessage}</p>
+        ) : (
+          <p className='email-copied-message' style={{ visibility: 'hidden', height: 'auto' }} aria-hidden="true">{text.emailCopiedMessage}</p>
+        )}
       </Row>
-
-      {/* Success Message */}
-      {showSuccessMessage && (
-        <Row padding="15px 0">
-          <p className='success-message'>{text.successMessage}</p>
-        </Row>
-      )}
-
-      <button className='infoBTNs' onClick={handleSubmit}>{text.submitButton}</button>
 
     </div>
   )
