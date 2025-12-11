@@ -122,6 +122,43 @@ body{
   margin: 0;
 }
 
+.linkedin-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: 'JetBrains Mono', 'Courier New', monospace;
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--color-tab-text-active);
+  background-color: transparent;
+  border: 2px solid var(--color-accent-primary);
+  padding: 3px;
+  margin: 0;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  width: 54px;
+  height: 54px;
+  box-sizing: border-box;
+}
+
+.linkedin-icon-link:hover {
+  color: var(--color-tab-text-hover);
+  border-color: var(--color-accent-primary);
+  background-color: var(--color-card-hover-bg);
+}
+
+.linkedin-icon {
+  width: 50px;
+  height: 50px;
+  color: currentColor;
+  transition: color 0.1s ease;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
 .copy-email-btn {
   font-family: 'JetBrains Mono', 'Courier New', monospace;
   font-size: 24px;
@@ -138,6 +175,7 @@ body{
 .copy-email-btn:hover {
   color: var(--color-tab-text-hover);
   border-color: var(--color-accent-primary);
+  background-color: var(--color-card-hover-bg);
 }
 
 .copy-email-btn.glow {
