@@ -82,7 +82,7 @@ const App = () => {
     repositoriesTab: language === 'Eng' ? 'Repositories' : 'المستودعات',
     skillsTab: language === 'Eng' ? 'Skills' : 'المهارات',
     hobbiesTab: language === 'Eng' ? 'Hobbies' : 'الهوايات',
-    skillsContent: language === 'Eng' ? 'Languages — Python, Java, JavaScript, HTML, CSS, Frameworks — React, MongoDB, Full-Stack Web Development, Tools — VS Code, Cursor, Antigravity, JetBrains IDEs, Figma, Git' : 'اللغات — بايثون، جافا، جافاسكربت، HTML، CSS، الأطر — رياكت، مونغو دي بي، تطوير الويب الكامل، الأدوات — VS Code، Cursor، Antigravity، بيئات JetBrains، فيجما، Git',
+    skillsContent: language === 'Eng' ? 'Languages — Python, Java, JavaScript, HTML, CSS,\nFrameworks — React, MongoDB, Full-Stack Web Development,\nTools — VS Code, Cursor, Antigravity, JetBrains IDEs, Figma, Git' : 'اللغات — بايثون، جافا، جافاسكربت، HTML، CSS،\nالأطر — رياكت، مونغو دي بي، تطوير الويب الكامل،\nالأدوات — VS Code، Cursor، Antigravity، بيئات JetBrains، فيجما، Git',
     hobbiesContent: language === 'Eng' ? 'Motor Sport, Gaming & Fitness' : 'سباق السيارات، الألعاب واللياقة البدنية',
     contactTitle: language === 'Eng' ? 'Contact me in:' : 'تواصل معي في:',
     copyButton: language === 'Eng' ? 'Copy' : 'نسخ',
