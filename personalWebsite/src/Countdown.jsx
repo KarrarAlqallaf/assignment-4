@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import './Countdown.css'
 
-const GRADUATION_DATE = new Date('2027-01-21T00:00:00')
+const GRADUATION_DATE = new Date('2027-06-08T00:00:00')
 
 const getTimeLeft = targetDate => {
   const now = Date.now()
