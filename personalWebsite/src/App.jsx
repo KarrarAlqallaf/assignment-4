@@ -82,7 +82,7 @@ const App = () => {
     repositoriesTab: language === 'Eng' ? 'Repositories' : 'المستودعات',
     skillsTab: language === 'Eng' ? 'Skills' : 'المهارات',
     hobbiesTab: language === 'Eng' ? 'Hobbies' : 'الهوايات',
-    skillsContent: language === 'Eng' ? 'Languages: Python, Java, JavaScript, HTML, CSS\nFrameworks: React, MongoDB, Full-Stack Web Development\nTools: VS Code, Cursor, Antigravity, JetBrains IDEs, Figma' : 'اللغات — بايثون، جافا، جافاسكربت، HTML، CSS،\nالبيئات: رياكت، مونغو دي بي، تطوير الويب الكامل،\nالأدوات: في أس كود، كورسر، أنتيجرافيتي، بيئات جيتبراينز، فيجما',
+    skillsContent: language === 'Eng' ? '---------Languages---------\n Python, Java, JavaScript, HTML, CSS\n\n---------Frameworks---------\n React, MongoDB, Full-Stack Web Development\n\n---------Tools---------\n VS Code, Cursor, Antigravity, JetBrains IDEs, Figma, Git' : '---------اللغات---------\n Python, Java, JavaScript, HTML, CSS\n\n---------البيئات---------\n React, MongoDB, Full-Stack Web Development\n\n---------الأدوات---------\n VS Code, Cursor, Antigravity, JetBrains IDEs, Figma',
     hobbiesContent: language === 'Eng' ? 'Motor Sport, Gaming & Fitness' : 'سباق السيارات، الألعاب واللياقة البدنية',
     contactTitle: language === 'Eng' ? 'Contact me in:' : 'تواصل معي في:',
     copyButton: language === 'Eng' ? 'Copy' : 'نسخ',
@@ -170,8 +170,11 @@ const App = () => {
 
       {/* Content sections - only show active tab */}
       <div style={{
-        height: '775px',
-        overflow: 'auto'
+        height: '775px',      // Keep your fixed height
+        overflowY: 'auto',    // ONLY allow vertical scrolling
+        overflowX: 'hidden',  // Disable horizontal scrolling
+        width: '100%',
+      
       }}>
         {activeTab === 'projects' && (
           <Row wrap={true} gap="20px" padding="20px 0">
@@ -194,7 +197,13 @@ const App = () => {
         {activeTab === 'skills' && (
           <Row>
             {/* --- Skills Content Translation --- */}
-            <p className='shP'>{text.skillsContent}</p>
+            <p className='shP'
+            style={{ 
+              whiteSpace: 'pre-wrap',   // Respects line breaks and wraps text
+              wordBreak: 'break-word',  // Forces long strings to break
+              width: '100%',            // Ensures text stays within the parent width
+              margin: 0                 // Prevents unexpected scroll jumps
+          }}>{text.skillsContent}</p>
           </Row>
         )}
 
